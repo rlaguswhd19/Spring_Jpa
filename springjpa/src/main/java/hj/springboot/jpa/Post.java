@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -26,12 +27,11 @@ public class Post {
 	
 	private String title;
 	
-	@OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<>();
 	
 	public void addComment(Comment comment) {
 		this.getComments().add(comment);
 		comment.setPost(this);
 	}
-	
 }

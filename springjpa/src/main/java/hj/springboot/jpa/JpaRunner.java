@@ -69,15 +69,19 @@ public class JpaRunner implements ApplicationRunner{
 //				.comment("지금부터라도 공부해")
 //				.build();
 //		post.addComment(comment2);
-		
+//		
 //		session.save(post);
-//		Post test = session.load(Post.class, post.getId());
-//		Set<Comment> set = test.getComments();
-//		for(Comment comment : set) {
-//			System.out.println(comment.getComment());
-//		}
 		
-		Post post = session.get(Post.class, 1L);
-		session.remove(post);
+		Post getPost = session.get(Post.class, 10L);
+		System.out.println(getPost.getTitle());
+
+		getPost.getComments().forEach(c -> {
+			System.out.println(c.getComment());
+		});
+//		session.remove(post);
+		
+//		Comment comment = session.get(Comment.class, 11L);
+//		System.out.println(comment.getComment());
+//		System.out.println(comment.getPost().getTitle());
 	}
 }
