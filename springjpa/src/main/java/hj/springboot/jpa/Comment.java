@@ -24,4 +24,5 @@ public class Comment {
 	
 	@ManyToOne
 	private Post post;
+
 }

@@ -2,16 +2,15 @@ package hj.springboot.jpa;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import hj.springboot.jpa.accounts.Account;
 import hj.springboot.jpa.accounts.Study;
@@ -55,29 +54,29 @@ public class JpaRunner implements ApplicationRunner{
 //		System.out.println("====================================");
 //		System.out.println(hj.getUsername());
 		
-//		Post post = Post.builder()
-//				.title("JPA 공부해보기")
-//				.comments(new HashSet<>())
-//				.build();
-//		
-//		Comment comment1 = Comment.builder()
-//				.comment("언제 공부하지")
-//				.build();
-//		post.addComment(comment1);
-//		
-//		Comment comment2 = Comment.builder()
-//				.comment("지금부터라도 공부해")
-//				.build();
-//		post.addComment(comment2);
-//		
-//		session.save(post);
+		Post post = Post.builder()
+				.title("JPA 공부해보기")
+				.comments(new HashSet<>())
+				.build();
 		
-		Post getPost = session.get(Post.class, 10L);
-		System.out.println(getPost.getTitle());
-
-		getPost.getComments().forEach(c -> {
-			System.out.println(c.getComment());
-		});
+		Comment comment1 = Comment.builder()
+				.comment("언제 공부하지")
+				.build();
+		post.addComment(comment1);
+		
+		Comment comment2 = Comment.builder()
+				.comment("지금부터라도 공부해")
+				.build();
+		post.addComment(comment2);
+		
+		session.save(post);
+		
+//		Post getPost = session.get(Post.class, 10L);
+//		System.out.println(getPost.getTitle());
+//
+//		getPost.getComments().forEach(c -> {
+//			System.out.println(c.getComment());
+//		});
 //		session.remove(post);
 		
 //		Comment comment = session.get(Comment.class, 11L);
